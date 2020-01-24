@@ -66,23 +66,23 @@ public enum AnonymousJSONValue: Codable, Equatable {
 
 // Convenience methods
 
-extension AnonymousJSONValue {
+public extension AnonymousJSONValue {
 
-    public var isNil:Bool {
+    var isNil:Bool {
         return self == .nil
     }
 
-    public var asBoolean:Bool {
+    var asBoolean:Bool {
         guard case let .boolean(value) = self else { preconditionFailure("Not a boolean") }
         return value
     }
 
-    public var asInteger:Int {
+    var asInteger:Int {
         guard case let .integer(value) = self else { preconditionFailure("Not an integer") }
         return value
     }
 
-    public var asDouble:Double {
+    var asDouble:Double {
 
         switch self {
             case let .double(value)  : return value
@@ -91,12 +91,12 @@ extension AnonymousJSONValue {
         }
     }
 
-    public var asString:String {
+    var asString:String {
         guard case let .string(value) = self else { preconditionFailure("Not a string") }
         return value
     }
 
-    public var asArray:AnonymousJSONArray {
+    var asArray:AnonymousJSONArray {
         guard case let .array(value) = self else { preconditionFailure("Not an array") }
         return value
     }
@@ -105,7 +105,7 @@ extension AnonymousJSONValue {
         return asArray[index]
     }
 
-    public var asObject:AnonymousJSONObject {
+    var asObject:AnonymousJSONObject {
         guard case let .object(value) = self else { preconditionFailure("Not an object") }
         return value
     }
